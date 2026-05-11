@@ -1,0 +1,2470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employment Hero · Customer Support Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500;1,9..40,700&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* EH Brand Palette */
+    --eh-purple:     #a569ff;
+    --eh-deep:       #2d0649;
+    --eh-black:      #121214;
+    --eh-paper:      #fdfbff;
+    --eh-violet:     #7622d7;
+    --eh-grape:      #460078;
+    --eh-tint-1:     #bb8eff;
+    --eh-tint-2:     #d2b4ff;
+    --eh-tint-3:     #e9d9ff;
+    --eh-lime:       #bafc58;
+    --eh-orange:     #ffa000;
+    --eh-cyan:       #40d1ff;
+
+    /* Semantic */
+    --bg-deep:    var(--eh-black);
+    --bg-panel:   #1a0530;
+    --bg-card:    #220a3d;
+    --bg-card-2:  #2d0649;
+    --hero-purple: var(--eh-violet);
+    --hero-deep:   var(--eh-grape);
+    --accent:     var(--eh-purple);
+    --accent-2:   var(--eh-tint-1);
+    --pink:       var(--eh-tint-2);
+    --line:       rgba(165, 105, 255, 0.18);
+    --line-soft:  rgba(255,255,255,0.08);
+    --text:       var(--eh-paper);
+    --muted:      #9a8dba;
+    --green:      var(--eh-lime);
+    --amber:      var(--eh-orange);
+    --red:        #ff6b6b;
+    --cyan:       var(--eh-cyan);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  .app-layout {
+    display: flex;
+    min-height: calc(100vh - 72px);
+  }
+
+  /* TOP BANNER */
+  .top-banner {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--eh-deep);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+  .top-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    height: 72px;
+  }
+  .banner-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .banner-logo svg {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+  .banner-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: 2px solid var(--eh-lime);
+    border-radius: 4px;
+    color: var(--eh-lime);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: transparent;
+    transition: all 0.25s;
+  }
+  .banner-pill:hover {
+    background: var(--eh-lime);
+    color: var(--eh-black);
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--bg-panel);
+    border-right: 1px solid var(--line);
+    padding: 20px 16px;
+    position: sticky;
+    top: 72px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+  .logo {
+    display: block;
+    padding: 4px 12px 28px;
+  }
+  .eh-logo {
+    width: 100%;
+    height: auto;
+    max-width: 180px;
+    display: block;
+  }
+  .nav-section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 16px 12px 8px;
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+  }
+  .nav-section-title:first-of-type { border-top: none; margin-top: 0;}
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .nav-item:hover { background: rgba(160,107,255,0.1); }
+  .nav-item.active { background: var(--hero-purple); color: white; }
+  .nav-icon { font-size: 14px; width: 18px; text-align: center; }
+
+  main { flex: 1; min-width: 0; }
+  .container { max-width: 1180px; padding: 0 56px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    background:
+      radial-gradient(ellipse 800px 500px at 80% 30%, rgba(165,105,255,0.45), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 20% 80%, rgba(118,34,215,0.55), transparent 60%),
+      linear-gradient(180deg, var(--eh-grape) 0%, var(--eh-deep) 100%);
+    padding: 100px 0 120px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(186,252,88,0.12), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: drift 18s infinite ease-in-out;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(-40px, 40px); }
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  h1.title {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
+  }
+  h1.title em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-lime);
+    font-size: 1.2em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-3deg) translateY(0.05em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-lime);
+    text-shadow: 0 4px 24px rgba(186,252,88,0.3);
+  }
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--accent-2);
+    max-width: 560px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* SECTIONS */
+  section.block {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  section.block.dark { background: var(--bg-deep); }
+  section.block.panel { background: var(--bg-panel); }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h2.section-title {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 56px;
+    max-width: 900px;
+  }
+  h2.section-title em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-purple);
+    font-size: 1.15em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-2deg) translateY(0.04em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-purple);
+  }
+
+  /* HOURS */
+  .hours-viz {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hours-viz::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(90deg, rgba(160,107,255,0.04) 1px, transparent 1px);
+    background-size: calc(100% / 24) 100%;
+    pointer-events: none;
+  }
+  .hours-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .timeline { display: none; }
+
+  /* CHANNEL AVAILABILITY ROWS */
+  .channels-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .channel-row {
+    display: grid;
+    grid-template-columns: 220px 1fr 160px;
+    gap: 32px;
+    align-items: center;
+    padding: 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .channel-row::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--accent), var(--pink));
+  }
+  .channel-row:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+    box-shadow: -4px 8px 32px rgba(160,107,255,0.15);
+  }
+  .channel-row.bot::before {
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  }
+
+  .channel-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .channel-icon {
+    width: 56px; height: 56px;
+    background: rgba(160,107,255,0.08);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .channel-name {
+    font-family: 'Lexend', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    color: white;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .channel-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  /* Days row */
+  .channel-mid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .days-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .d {
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+  }
+  .d.on {
+    background: linear-gradient(135deg, var(--hero-purple), var(--pink));
+    color: white;
+    box-shadow: 0 4px 12px rgba(232,121,255,0.25);
+  }
+  .d.off {
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(160,107,255,0.25);
+    color: var(--muted);
+  }
+  .channel-row.bot .d.on {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 4px 12px rgba(160,107,255,0.25);
+  }
+
+  /* Time band */
+  .time-band {
+    position: relative;
+    height: 14px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 100px;
+  }
+  .band-bar {
+    position: absolute;
+    top: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--hero-purple), var(--pink));
+    border-radius: 100px;
+    box-shadow: 0 0 16px rgba(232,121,255,0.4);
+    animation: bandGrow 1s cubic-bezier(0.65, 0, 0.35, 1) backwards;
+    transform-origin: left;
+  }
+  .band-bar.full {
+    left: 0; right: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(160,107,255,0.5),
+      rgba(160,107,255,0.5) 6px,
+      rgba(200,156,255,0.5) 6px,
+      rgba(200,156,255,0.5) 12px
+    );
+    box-shadow: 0 0 12px rgba(160,107,255,0.3);
+  }
+  .band-bar.partial {
+    left: 35.4%;
+    right: 20.8%;
+    animation-delay: 0.3s;
+  }
+  @keyframes bandGrow {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+  }
+  .band-label {
+    position: absolute;
+    top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+  }
+  .band-label.start { left: 0; }
+  .band-label.end { right: 0; }
+  .channel-row.human .band-label.start { left: 35.4%; transform: translateX(-50%); }
+  .channel-row.human .band-label.end { right: 20.8%; transform: translateX(50%); }
+  .band-tz {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* Right column */
+  .channel-right {
+    text-align: right;
+  }
+  .availability-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .availability-tag.always-on {
+    background: rgba(93,212,154,0.12);
+    border: 1px solid rgba(93,212,154,0.35);
+    color: var(--green);
+  }
+  .availability-tag.weekdays {
+    background: rgba(232,121,255,0.12);
+    border: 1px solid rgba(232,121,255,0.35);
+    color: var(--pink);
+  }
+  .tag-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 0 currentColor;
+    animation: tagPulse 2.2s infinite;
+  }
+  @keyframes tagPulse {
+    0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+    50% { box-shadow: 0 0 0 5px transparent; opacity: 0.6; }
+  }
+  .availability-hours {
+    font-family: 'Lexend', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .availability-hours em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-purple);
+    font-size: 1.15em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-2deg) translateY(0.04em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-purple);
+  }
+  .hours-footer {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .hours-stat .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .hours-stat .value {
+    font-family: 'Lexend', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+  }
+  .hours-stat .value em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-purple);
+    font-size: 1.15em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-2deg) translateY(0.04em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-purple);
+  }
+
+  /* STEPS */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 28px 24px;
+    transition: all 0.3s;
+  }
+  .step-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(160,107,255,0.15);
+  }
+  .step-emoji {
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .step-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .step-title {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .step-body {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  /* OPTIONS */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .option-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 36px 32px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+    overflow: hidden;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+  }
+  .option-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 100% 0%, rgba(232,121,255,0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+  }
+  .option-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(160,107,255,0.2);
+  }
+  .option-card:hover::before { opacity: 1; }
+  .option-card.active {
+    border-color: var(--pink);
+    background: linear-gradient(135deg, var(--bg-card-2), var(--hero-deep));
+    box-shadow: 0 0 0 1px var(--pink), 0 20px 60px rgba(232,121,255,0.25);
+  }
+  .card-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+  }
+  .card-icon {
+    height: 80px;
+    margin: 12px 0 24px;
+    display: flex;
+    align-items: center;
+  }
+  .icon-svg { width: 72px; height: 72px; }
+  .card-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .card-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .card-tag {
+    padding: 3px 8px;
+    background: var(--pink);
+    color: var(--bg-deep);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 3px;
+  }
+  .card-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+    flex: 1;
+  }
+  .card-cta {
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-cta-arrow { transition: transform 0.3s; }
+  .option-card:hover .card-cta-arrow { transform: translateX(6px); }
+
+  @keyframes botPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+  @keyframes ringFloat { 0%, 100% { transform: translateY(0); opacity: 0.9; } 50% { transform: translateY(-4px); opacity: 1; } }
+  .option-card:hover .icon-bot { animation: botPulse 1.2s infinite; }
+  .option-card:hover .icon-chat-bubble { animation: ringFloat 1.5s infinite; }
+  .option-card:hover .icon-ticket { animation: ringFloat 1.5s infinite; }
+
+  .detail-panel {
+    margin-top: 32px;
+    background: linear-gradient(135deg, var(--bg-card-2), var(--hero-deep));
+    border: 1px solid var(--pink);
+    border-radius: 12px;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+  }
+  .detail-panel.open {
+    max-height: 800px;
+    padding: 48px;
+  }
+  .detail-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 48px;
+  }
+  .detail-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .detail-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    color: white;
+  }
+  .detail-title em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-purple);
+    font-size: 1.15em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-2deg) translateY(0.04em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-purple);
+  }
+  .detail-meta-grid { display: grid; gap: 14px; margin-top: 28px; }
+  .detail-meta-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .detail-meta-row .key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-2);
+    padding-top: 2px;
+    font-weight: 700;
+  }
+  .detail-points li {
+    list-style: none;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .point-num {
+    font-family: 'Caveat', cursive;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--pink);
+    font-size: 20px;
+    flex-shrink: 0;
+    width: 32px;
+  }
+
+  /* DECISION TREE */
+  .decision-tree {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 48px 32px;
+    position: relative;
+  }
+  .tree-svg { width: 100%; height: auto; display: block; }
+  .tree-node { transition: all 0.3s; cursor: pointer; }
+
+  /* URGENCY */
+  .urgency-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .urgency-col {
+    padding: 40px;
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid var(--line);
+  }
+  .urgency-col.urgent {
+    background: linear-gradient(135deg, var(--eh-grape), var(--eh-violet));
+    border-color: var(--eh-purple);
+  }
+  .urgency-col.non-urgent { background: var(--bg-card); }
+  .urgency-stamp {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--pink);
+  }
+  .urgency-col.non-urgent .urgency-stamp { color: var(--accent); }
+  .urgency-symbol {
+    font-family: 'Lexend', sans-serif;
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 20px;
+    color: var(--eh-lime);
+  }
+  .urgency-col.non-urgent .urgency-symbol {
+    color: var(--eh-cyan);
+  }
+  .urgency-h {
+    font-family: 'Lexend', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    line-height: 1;
+    color: white;
+  }
+  .urgency-list { list-style: none; }
+  .urgency-list li {
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .urgency-col.non-urgent .urgency-list li { color: var(--muted); }
+  .urgency-list .marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    margin-top: 3px;
+    color: var(--accent-2);
+    font-weight: 700;
+  }
+
+  /* PRACTICE */
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .practice-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 32px 24px;
+    transition: all 0.35s;
+    position: relative;
+  }
+  .practice-card:hover {
+    border-color: var(--pink);
+    background: linear-gradient(135deg, var(--bg-card-2), var(--hero-deep));
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(232,121,255,0.2);
+  }
+  .practice-num {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--eh-lime);
+    transform: rotate(-4deg);
+    transform-origin: left center;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .practice-h {
+    font-family: 'Lexend', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    line-height: 1.1;
+    color: white;
+  }
+  .practice-p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  /* COMPARE */
+  .compare-box {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .compare-side { padding: 32px; position: relative; }
+  .compare-side.bad { background: var(--bg-card); }
+  .compare-side.good { background: linear-gradient(135deg, var(--bg-card-2), var(--hero-deep)); }
+  .compare-side .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .compare-side.bad .label { color: var(--red); }
+  .compare-side.good .label { color: var(--green); }
+  .compare-quote {
+    font-family: 'DM Sans', sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.5;
+    color: white;
+  }
+  .compare-divider {
+    width: 1px;
+    background: var(--line);
+    position: relative;
+  }
+  .compare-divider::before {
+    content: "VS";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-deep);
+    padding: 10px 8px;
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    color: var(--pink);
+    letter-spacing: 0.05em;
+  }
+
+  /* PHONE */
+  .phone-banner {
+    background: linear-gradient(135deg, var(--hero-deep), var(--hero-purple));
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .phone-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 90% 50%, rgba(232,121,255,0.3), transparent 60%);
+    pointer-events: none;
+  }
+  .phone-icon-wrap {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--pink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+  }
+  .phone-content { position: relative; z-index: 1; }
+  .phone-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin-bottom: 8px;
+  }
+  .phone-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 8px;
+    line-height: 1.05;
+  }
+  .phone-title em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-purple);
+    font-size: 1.15em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-2deg) translateY(0.04em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-purple);
+  }
+  .phone-sub { font-size: 14px; color: var(--accent-2); }
+  .phone-number {
+    font-family: 'Lexend', sans-serif;
+    font-size: 32px;
+    color: white;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.02em;
+  }
+  .phone-number small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent-2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* NOTICE */
+  .notice-box {
+    border: 1px solid var(--red);
+    background: rgba(255,107,107,0.06);
+    border-radius: 12px;
+    padding: 36px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .notice-icon {
+    width: 64px; height: 64px;
+    background: rgba(255,107,107,0.15);
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .notice-strike {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    text-decoration: line-through;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .notice-h {
+    font-family: 'Lexend', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    color: white;
+  }
+  .notice-h em {
+    font-family: 'Caveat', cursive;
+    font-style: italic;
+    color: var(--red);
+  }
+  .notice-body { font-size: 14px; color: var(--muted); }
+  .notice-stamp {
+    transform: rotate(-6deg);
+    padding: 10px 14px;
+    border: 2px solid var(--red);
+    color: var(--red);
+    font-family: 'Lexend', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* WHO CAN ACCESS */
+  .access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .access-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 28px 28px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .access-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+  }
+  .access-card.eligible::before { background: var(--eh-lime); }
+  .access-card.ineligible::before { background: var(--red); }
+  .access-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .access-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    background: rgba(186,252,88,0.1);
+    border: 1px solid rgba(186,252,88,0.35);
+    color: var(--eh-lime);
+  }
+  .access-badge.restricted {
+    background: rgba(255,107,107,0.08);
+    border-color: rgba(255,107,107,0.35);
+    color: var(--red);
+  }
+  .access-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .access-card.ineligible .access-title { color: var(--accent-2); }
+  .access-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .access-li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+  .access-li:first-child { border-top: none; padding-top: 0; }
+  .access-li:last-child { padding-bottom: 0; }
+  .li-num {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--eh-purple);
+    flex-shrink: 0;
+    width: 24px;
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .access-card.ineligible .li-num { color: var(--muted); }
+  .access-li strong {
+    display: block;
+    font-family: 'Lexend', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .access-card.ineligible .access-li strong { color: var(--accent-2); }
+  .access-li span {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* WHY */
+  .why-row {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+  .why-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .why-eyebrow::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .why-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    transition: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+  }
+  .why-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    background: var(--line);
+  }
+  .why-card:hover { background: transparent; border-color: transparent; }
+  .why-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .why-h {
+    font-family: 'Lexend', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    color: white;
+    margin-bottom: 4px;
+    line-height: 1.1;
+  }
+  .why-p {
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+
+  /* CALLOUT */
+  .access-callout {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 20px;
+    background: rgba(255,160,0,0.06);
+    border: 1px solid rgba(255,160,0,0.25);
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .access-callout strong {
+    color: var(--eh-orange);
+    font-weight: 700;
+  }
+  .callout-mark {
+    width: 24px; height: 24px;
+    background: var(--eh-orange);
+    color: var(--eh-black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  /* TRAINING */
+  .section-intro {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 680px;
+    margin-top: -32px;
+    margin-bottom: 56px;
+  }
+  .training-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .training-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  .training-card::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(232,121,255,0.12), transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .training-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(160,107,255,0.15);
+  }
+  .training-card:hover::before { opacity: 1; }
+
+  .training-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(160,107,255,0.1);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .badge-dot.live {
+    background: #ff6b6b;
+    box-shadow: 0 0 0 0 rgba(255,107,107,0.7);
+    animation: livePulse 2s infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,107,0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(255,107,107,0); }
+  }
+
+  .training-icon {
+    width: 64px; height: 64px;
+    background: rgba(160,107,255,0.08);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .training-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: white;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .training-title em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-purple);
+    font-size: 1.15em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-2deg) translateY(0.04em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-purple);
+  }
+  .training-sub {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .training-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .t-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .t-step:last-child { border-bottom: none; }
+  .t-step em {
+    font-style: normal;
+    background: rgba(232,121,255,0.15);
+    color: var(--pink);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .t-step-num {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--eh-lime);
+    flex-shrink: 0;
+    width: 28px;
+    padding-top: 1px;
+  }
+
+  .training-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+  }
+  .t-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.02);
+    transition: all 0.25s;
+  }
+  .t-link:hover {
+    border-color: var(--accent);
+    background: rgba(160,107,255,0.1);
+    color: white;
+  }
+  .t-link.primary {
+    background: linear-gradient(135deg, var(--accent), var(--hero-purple));
+    border-color: transparent;
+    color: white;
+  }
+  .t-link.primary:hover {
+    background: linear-gradient(135deg, var(--pink), var(--accent));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(160,107,255,0.3);
+  }
+
+  .training-footnote {
+    margin-top: 32px;
+    padding: 16px 20px;
+    border-left: 2px solid var(--accent);
+    background: rgba(160,107,255,0.04);
+    border-radius: 0 6px 6px 0;
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .footnote-marker {
+    color: var(--pink);
+    font-family: 'Caveat', cursive;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 120px 0 64px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 800px 400px at 50% 0%, rgba(111,63,209,0.25), transparent 70%),
+      var(--bg-deep);
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+  }
+  .footer-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .footer-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: white;
+  }
+  .footer-title em {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--eh-purple);
+    font-size: 1.15em;
+    letter-spacing: 0;
+    display: inline-block;
+    transform: rotate(-2deg) translateY(0.04em);
+    text-transform: none;
+    background: none;
+    -webkit-text-fill-color: var(--eh-purple);
+  }
+  .footer-sub {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto 40px;
+  }
+  .footer-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 8px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--eh-lime);
+    color: var(--eh-black);
+    box-shadow: 0 8px 24px rgba(186,252,88,0.25);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(186,252,88,0.5);
+    background: var(--eh-lime);
+    filter: brightness(1.08);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--line);
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    background: rgba(160,107,255,0.08);
+  }
+  .btn-arrow {
+    transition: transform 0.3s;
+    display: inline-block;
+  }
+  .btn-primary:hover .btn-arrow { transform: translateX(4px); }
+  .footer-meta-row {
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-meta-row .bright { color: var(--accent-2); font-weight: 700; }
+
+  /* MOBILE NAV */
+  .nav-toggle {
+    display: none;
+    position: fixed;
+    top: 16px; left: 16px;
+    z-index: 200;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1100px) {
+    .container { padding: 0 32px; }
+    .steps-grid, .practice-grid { grid-template-columns: 1fr 1fr; }
+    .options-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .app-layout { display: block; }
+    .sidebar {
+      position: fixed;
+      top: 72px; left: -260px;
+      height: calc(100vh - 72px);
+      z-index: 150;
+      transition: left 0.3s;
+    }
+    .sidebar.open { left: 0; }
+    .nav-toggle { display: block; top: 18px; }
+    .top-banner-inner { padding: 12px 16px; padding-left: 70px; height: 72px; }
+    .banner-pill { font-size: 9px; padding: 6px 10px; letter-spacing: 0.1em; border-width: 1.5px; }
+    .banner-logo svg { height: 32px; }
+    .container { padding: 0 24px; }
+    .hero { padding: 96px 0 80px; }
+    .urgency-grid { grid-template-columns: 1fr; }
+    .compare-box { grid-template-columns: 1fr; }
+    .compare-divider { height: 1px; width: auto; }
+    .detail-inner { grid-template-columns: 1fr; gap: 24px; }
+    .hours-footer { grid-template-columns: 1fr; gap: 16px; }
+    .notice-box, .phone-banner { grid-template-columns: 1fr; text-align: center; }
+    .notice-icon, .phone-icon-wrap { margin: 0 auto; }
+    .phone-number { text-align: center; }
+    .hours-viz, .urgency-col, .detail-panel.open, .decision-tree { padding: 24px; }
+    section.block { padding: 72px 0; }
+    .footer-meta-row { justify-content: center; text-align: center; }
+    .footer-actions .btn { width: 100%; justify-content: center; }
+    .week-strip { display: none; }
+    .channel-row {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 24px;
+    }
+    .channel-right { text-align: left; }
+    .availability-hours { font-size: 20px; }
+    .channel-name { font-size: 18px; }
+    .training-grid { grid-template-columns: 1fr; }
+    .training-card { padding: 28px 24px; }
+    .training-title { font-size: 28px; }
+    .access-grid { grid-template-columns: 1fr; }
+    .access-card { padding: 28px 24px; }
+    .access-title { font-size: 26px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .access-callout { flex-direction: column; gap: 16px; }
+    .section-intro { font-size: 15px; margin-bottom: 40px; margin-top: -24px; }
+  }
+  @media (max-width: 500px) {
+    .steps-grid, .practice-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<button class="nav-toggle" id="navToggle">☰ MENU</button>
+
+<!-- TOP BANNER -->
+<header class="top-banner">
+  <div class="top-banner-inner">
+    <a href="#top" class="banner-logo" aria-label="Employment Hero">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="25 220 450 60" aria-hidden="true">
+        <path fill="#fff" d="M108.11,259.66c3.71,0,6.15-1.79,7.42-3.79.16-.25.51-.28.7-.06l3.03,3.34c.15.16.16.42.02.58-2.19,2.58-5.95,4.66-11.36,4.66-8.24,0-12.44-5.48-12.44-12.58s4.72-12.68,12.4-12.68,11.33,4.8,11.28,13.64c0,.24-.2.44-.45.44h-16.96c-.28,0-.49.25-.44.53.67,3.91,3.35,5.93,6.8,5.93h0ZM101.94,249.36h10.94c.28,0,.48-.25.44-.52-.51-3.22-2.52-5-5.45-5-2.75,0-5.41,1.59-6.36,4.95-.08.28.13.57.43.57ZM155.17,250.53c0-4.4-1.73-6.5-5.15-6.5s-5.48,2.43-5.48,6.83v12.47c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.38c0-4.86-1.4-6.93-4.91-6.93-4.12,0-5.71,3.74-5.71,7.72v11.58c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-23.16c0-.25.2-.44.44-.44h4.32c.27,0,.48.24.44.51l-.49,3.31c-.07.49.59.72.83.29,1.49-2.69,3.89-4.71,7.69-4.71,3.06,0,5.96,1.43,7.42,4.79.15.34.62.35.8.03,1.51-2.72,3.97-4.82,7.69-4.82,4.91,0,8.65,3.41,8.65,10.67v13.54c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.8h0ZM180.05,264.38c-3.51,0-6.06-1.4-7.67-3.58-.25-.34-.8-.16-.8.27v11.38c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-32.28c0-.25.2-.44.44-.44h4.28c.27,0,.48.24.44.51l-.42,3.04c-.07.48.57.71.82.3,1.56-2.6,4.29-4.45,8.42-4.45,5.94,0,10.67,4.4,10.67,12.63s-4.72,12.63-10.67,12.63h0ZM171.58,251.8c0,5.38,2.81,7.86,6.69,7.86s6.6-2.43,6.6-7.86-2.67-7.91-6.6-7.91-6.69,2.48-6.69,7.91ZM194.64,229.38h4.63c.25,0,.44.2.44.44v33.5c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-33.5c0-.25.2-.44.44-.44ZM215.81,264.38c-6.92,0-12.77-4.45-12.77-12.63s5.85-12.63,12.77-12.63,12.77,4.54,12.77,12.63-5.8,12.63-12.77,12.63ZM208.89,251.75c0,5.34,3.23,7.86,6.92,7.86s6.93-2.53,6.93-7.86-3.23-7.81-6.93-7.81-6.92,2.57-6.92,7.81ZM232.74,273.36c-2.03,0-3.9-.6-5.17-1.57-.18-.14-.24-.38-.13-.57l2.04-3.74c.14-.27.51-.31.72-.09.8.83,1.82,1.3,3.01,1.3,1.68,0,3.04-1.36,4.12-4.82l.05-.05-9.75-23.48c-.12-.29.09-.62.41-.62h4.97c.19,0,.35.11.42.28l6.21,16.26c.15.38.69.38.83,0l6.12-16.25c.06-.17.23-.29.42-.29h4.78c.32,0,.53.32.41.62l-10.41,25.12c-2.43,5.89-5.14,7.91-9.03,7.91h0ZM287.17,250.53c0-4.4-1.73-6.5-5.15-6.5s-5.48,2.43-5.48,6.83v12.47c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.38c0-4.86-1.4-6.93-4.91-6.93-4.12,0-5.71,3.74-5.71,7.72v11.58c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-23.16c0-.25.2-.44.44-.44h4.33c.27,0,.48.24.44.51l-.49,3.31c-.07.49.59.72.83.29,1.49-2.69,3.89-4.71,7.69-4.71,3.06,0,5.96,1.43,7.42,4.79.15.34.62.35.8.03,1.51-2.72,3.97-4.82,7.69-4.82,4.91,0,8.65,3.41,8.65,10.67v13.54c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.8h0ZM308.3,259.66c3.71,0,6.15-1.79,7.42-3.79.16-.25.5-.28.7-.06l3.03,3.34c.15.16.16.42.01.58-2.19,2.58-5.95,4.66-11.36,4.66-8.24,0-12.44-5.48-12.44-12.58s4.73-12.68,12.4-12.68,11.33,4.8,11.28,13.64c0,.24-.2.44-.45.44h-16.96c-.28,0-.49.25-.44.53.67,3.91,3.35,5.93,6.8,5.93h0ZM302.13,249.36h10.94c.28,0,.48-.25.44-.52-.52-3.22-2.52-5-5.45-5-2.75,0-5.41,1.59-6.36,4.95-.08.28.13.57.43.57ZM340.16,250.77c0-4.96-1.87-6.79-5.57-6.79s-5.99,2.81-5.99,7.11v12.23c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-23.16c0-.25.2-.44.44-.44h4.32c.27,0,.48.24.44.51l-.51,3.54c-.07.48.58.71.82.29,1.63-2.86,4.25-4.95,8.14-4.95,5.05,0,8.98,3.32,8.98,11.04v13.17c0,.25-.2.44-.44.44h-4.68c-.25,0-.44-.2-.44-.44v-12.56h0ZM352.21,254.7l-.05-9.94c0-.25-.2-.44-.44-.44h-3.93c-.25,0-.44-.2-.44-.44v-3.69c0-.25.2-.44.44-.44h3.93c.25,0,.44-.2.44-.44v-4.67c0-.16.09-.31.23-.39l5.34-3.01h.05v8.07c0,.25.2.44.44.44h8.05c.25,0,.44.2.44.44v3.69c0,.25-.2.44-.44.44h-8.05c-.25,0-.44.2-.44.44v9.47c0,3.88,1.21,5.34,3.55,5.34,1.87,0,3.38-.93,4.41-2.19.19-.23.54-.22.71.03l2.3,3.36c.12.18.1.42-.06.57-1.45,1.44-4.25,3.05-8.11,3.05-5.2,0-8.38-3.18-8.38-9.68h0ZM394.42,250.39c0-4.63-1.83-6.46-5.15-6.46-4.91,0-6.46,3.84-6.46,7.53v11.86c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-33.5c0-.25.2-.44.44-.44h4.63c.25,0,.44.2.44.44v13.04c0,.43.56.62.81.26,1.63-2.4,4.07-4.01,7.47-4.01,4.68,0,8.84,3.09,8.84,11.09l.05,13.12c0,.25-.2.45-.44.45h-4.67c-.25,0-.44-.2-.44-.44v-12.94h0ZM415.58,259.66c3.71,0,6.15-1.79,7.42-3.79.16-.25.51-.28.7-.06l3.03,3.34c.15.16.16.42.02.58-2.19,2.58-5.95,4.66-11.36,4.66-8.24,0-12.44-5.48-12.44-12.58s4.73-12.68,12.4-12.68,11.33,4.8,11.28,13.64c0,.24-.2.44-.45.44h-16.96c-.28,0-.49.25-.44.53.67,3.91,3.35,5.93,6.8,5.93h0ZM409.41,249.36h10.94c.28,0,.48-.25.44-.52-.52-3.22-2.52-5-5.45-5-2.75,0-5.41,1.59-6.36,4.95-.08.28.13.57.43.57ZM430.37,263.33v-23.16c0-.25.2-.44.44-.44h4.32c.27,0,.48.24.44.51l-.39,2.48c-.08.49.59.72.83.28,1.34-2.42,3.27-3.88,5.86-3.88,1.65,0,3.26.49,4.53,1.42.17.13.22.36.13.55l-2.1,4.4c-.13.27-.47.33-.7.14-.92-.8-2.07-1.22-3.31-1.22-2.67,0-4.54,2.24-4.54,8.42v10.5c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44h0ZM458.24,264.38c-6.92,0-12.77-4.45-12.77-12.63s5.85-12.63,12.77-12.63,12.77,4.54,12.77,12.63-5.8,12.63-12.77,12.63ZM451.32,251.75c0,5.34,3.23,7.86,6.92,7.86s6.93-2.53,6.93-7.86-3.23-7.81-6.93-7.81-6.92,2.57-6.92,7.81Z"/>
+        <path fill="#fff" d="M70.11,257.33c.8,0,1.55.44,1.95,1.15.38.68.37,1.49-.03,2.16l-.02.03c-2.79,4.44-7.28,7.67-12.34,8.88-1.38.33-2.35,1.58-2.35,3.05,0,1.69,1.36,3.07,3.04,3.07.24,0,.47-.03.71-.08,5.65-1.35,10.78-4.6,14.43-9.17,3.77-4.7,5.76-10.37,5.76-16.4s-1.99-11.7-5.76-16.4c-3.65-4.58-8.78-7.84-14.43-9.18-.23-.06-.47-.08-.71-.08-1.67,0-3.04,1.37-3.04,3.07,0,1.46.96,2.71,2.35,3.05,5.05,1.21,9.55,4.44,12.33,8.86l.03.06c.4.66.41,1.47.03,2.15-.4.71-1.15,1.15-1.95,1.15-.33,0-.64-.07-.95-.21-1.1-.52-2.29-.78-3.52-.78-4.4,0-8.04,3.44-8.29,7.83v.05c-.01.13-.02.23-.02.33v.2c0,.1,0,.21.02.33v.05c.25,4.39,3.9,7.84,8.29,7.84,1.23,0,2.42-.27,3.52-.78.3-.14.62-.21.95-.21"/>
+        <path fill="#fff" d="M49.88,224.36c-.24,0-.47.03-.71.08-5.65,1.34-10.78,4.6-14.43,9.17-3.77,4.71-5.76,10.37-5.76,16.4s1.99,11.7,5.76,16.4c3.66,4.57,8.78,7.83,14.43,9.17.24.06.47.08.71.08,1.67,0,3.04-1.37,3.04-3.07,0-1.46-.96-2.71-2.35-3.05-5.05-1.21-9.55-4.44-12.33-8.87l-.03-.05c-.41-.68-.42-1.48-.03-2.16.4-.71,1.15-1.15,1.95-1.15.33,0,.64.07.95.21,1.1.52,2.29.78,3.52.78,4.4,0,8.04-3.44,8.29-7.83v-.05c.01-.12.02-.22.02-.33v-.2c0-.1,0-.21-.02-.33v-.05c-.25-4.39-3.9-7.84-8.29-7.84-1.23,0-2.42.27-3.52.78-.3.14-.62.21-.95.21-.8,0-1.55-.44-1.95-1.15-.38-.68-.37-1.49.03-2.16v-.02l.02-.03c2.78-4.43,7.28-7.66,12.33-8.87,1.38-.33,2.35-1.58,2.35-3.05,0-1.69-1.36-3.07-3.04-3.07"/>
+      </svg>
+    </a>
+    <span class="banner-pill">Partner Enablement Hub</span>
+  </div>
+</header>
+
+<div class="app-layout">
+
+<aside class="sidebar" id="sidebar">
+  <a href="#top" class="nav-item active"><span class="nav-icon">🏠</span> Home</a>
+
+  <div class="nav-section-title">Support Channels</div>
+  <a href="#access" class="nav-item"><span class="nav-icon">🔑</span> Who Can Access</a>
+  <a href="#options" class="nav-item"><span class="nav-icon">💬</span> In-Platform Support</a>
+  <a href="#hours" class="nav-item"><span class="nav-icon">🕒</span> Support Hours</a>
+  <a href="#urgency" class="nav-item"><span class="nav-icon">⚡</span> Urgency Levels</a>
+  <a href="#phone" class="nav-item"><span class="nav-icon">📞</span> Phone Support</a>
+
+  <div class="nav-section-title">Best Practice</div>
+  <a href="#practice" class="nav-item"><span class="nav-icon">✨</span> Asking Well</a>
+  <a href="#training" class="nav-item"><span class="nav-icon">🎓</span> Training Options</a>
+  <a href="#notice" class="nav-item"><span class="nav-icon">📬</span> Email Notice</a>
+</aside>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Customer Support Options</div>
+      <h1 class="title">Stuck? <em>Sorted.</em></h1>
+      <p class="hero-sub">Every way you can reach Employment Hero support, and how to ask so you get the right answer first time. No runaround. No fluff.</p>
+    </div>
+  </section>
+
+  <section class="block dark">
+    <div class="container">
+      <div class="section-eyebrow">How Support Works</div>
+      <h2 class="section-title">You ask.<br>We've <em>got you.</em></h2>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-emoji">🤖</div>
+          <div class="step-label">Step 01</div>
+          <div class="step-title">Start with Herobot</div>
+          <div class="step-body">AI-powered, 24/7. Most questions are answered instantly from our help library — no waiting required.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-emoji">💬</div>
+          <div class="step-label">Step 02</div>
+          <div class="step-title">Escalate to a human</div>
+          <div class="step-body">Not resolved? Request live chat with our support team during support hours.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-emoji">🔍</div>
+          <div class="step-label">Step 03</div>
+          <div class="step-title">We investigate</div>
+          <div class="step-body">Complex issues are lodged as tickets and routed by topic, urgency and team availability.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-emoji">✅</div>
+          <div class="step-label">Step 04</div>
+          <div class="step-title">You're sorted</div>
+          <div class="step-body">Our team follows up via email with the fix, explanation or next step — every time.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block panel" id="access">
+    <div class="container">
+      <div class="section-eyebrow">Who Can Access Support</div>
+      <h2 class="section-title">Reserved for<br>platform <em>admins.</em></h2>
+      <p class="section-intro">Only nominated platform administrators can contact the Employment Hero support team. Here's the why — and what it means for the rest of your team.</p>
+
+      <div class="access-grid">
+        <!-- WHO -->
+        <div class="access-card eligible">
+          <div class="access-badge">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5,10 12,3" stroke="#bafc58" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+            <span>Can Contact Support</span>
+          </div>
+          <div class="access-title">Platform <em>Admins &amp; Owners</em></div>
+          <div class="access-list">
+            <div class="access-li">
+              <span class="li-num">01</span>
+              <div>
+                <strong>Platform owners</strong>
+                <span>The named owner of the EH subscription.</span>
+              </div>
+            </div>
+            <div class="access-li">
+              <span class="li-num">02</span>
+              <div>
+                <strong>Platform admins</strong>
+                <span>Users granted admin-level access in your platform settings.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOT -->
+        <div class="access-card ineligible">
+          <div class="access-badge restricted">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="3" y1="3" x2="11" y2="11" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round"/><line x1="11" y1="3" x2="3" y2="11" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span>Cannot Contact Support</span>
+          </div>
+          <div class="access-title">Everyone <em>else.</em></div>
+          <div class="access-list">
+            <div class="access-li">
+              <span class="li-num">01</span>
+              <div>
+                <strong>Employees &amp; managers</strong>
+                <span>Should raise platform questions with their internal admin — not directly with EH.</span>
+              </div>
+            </div>
+            <div class="access-li">
+              <span class="li-num">02</span>
+              <div>
+                <strong>External users</strong>
+                <span>Contractors, partners and anyone without admin access should also route through their admin.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="block dark" id="options">
+    <div class="container">
+      <div class="section-eyebrow">In-Platform Support</div>
+      <h2 class="section-title">Three doors.<br><em>One platform.</em></h2>
+
+      <div class="options-grid">
+        <div class="option-card" data-id="bot">
+          <div class="card-num"><span>01 / 03</span><span>AI</span></div>
+          <div class="card-icon">
+            <svg class="icon-svg icon-bot" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="18" y="20" width="44" height="40" rx="6" stroke="#a569ff" stroke-width="2.5"/>
+              <circle cx="30" cy="36" r="3" fill="#bb8eff"/>
+              <circle cx="50" cy="36" r="3" fill="#bb8eff"/>
+              <path d="M30 48 Q40 54 50 48" stroke="#a569ff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <line x1="40" y1="20" x2="40" y2="10" stroke="#a569ff" stroke-width="2.5"/>
+              <circle cx="40" cy="8" r="3" fill="#bb8eff"/>
+              <line x1="18" y1="36" x2="10" y2="36" stroke="#a569ff" stroke-width="2.5"/>
+              <line x1="62" y1="36" x2="70" y2="36" stroke="#a569ff" stroke-width="2.5"/>
+              <rect x="26" y="62" width="6" height="8" fill="#a569ff"/>
+              <rect x="48" y="62" width="6" height="8" fill="#a569ff"/>
+            </svg>
+          </div>
+          <div class="card-title">Herobot</div>
+          <div class="card-meta">24 / 7 · AI Assistant<span class="card-tag">Start Here</span></div>
+          <div class="card-body">Always on. Instant answers built from our help library. The fastest door — and your only one outside support hours.</div>
+          <div class="card-cta">Learn more <span class="card-cta-arrow">→</span></div>
+        </div>
+
+        <div class="option-card" data-id="chat">
+          <div class="card-num"><span>02 / 03</span><span>Human</span></div>
+          <div class="card-icon">
+            <svg class="icon-svg icon-chat-bubble" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 22 Q14 14 22 14 H58 Q66 14 66 22 V42 Q66 50 58 50 H32 L20 60 V50 Q14 50 14 42 Z" stroke="#a569ff" stroke-width="2.5" fill="none"/>
+              <circle cx="28" cy="32" r="2.5" fill="#bb8eff"/>
+              <circle cx="40" cy="32" r="2.5" fill="#bb8eff"/>
+              <circle cx="52" cy="32" r="2.5" fill="#bb8eff"/>
+              <circle cx="58" cy="58" r="8" stroke="#a569ff" stroke-width="2.5" fill="#220a3d"/>
+              <path d="M53 58 L56.5 61.5 L63 55" stroke="#bafc58" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="card-title">Live Chat</div>
+          <div class="card-meta">Mon–Fri · 8:30–7pm AEST</div>
+          <div class="card-body">A real human, in real time. Best for fast clarifications and pointed questions you can answer in a sentence or two.</div>
+          <div class="card-cta">Learn more <span class="card-cta-arrow">→</span></div>
+        </div>
+
+        <div class="option-card" data-id="ticket">
+          <div class="card-num"><span>03 / 03</span><span>Async</span></div>
+          <div class="card-icon">
+            <svg class="icon-svg icon-ticket" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 28 V52 H70 V28 Q70 24 66 24 Q66 30 60 30 Q60 24 56 24 H14 Q10 24 10 28 Z" stroke="#a569ff" stroke-width="2.5" fill="none"/>
+              <line x1="22" y1="22" x2="22" y2="58" stroke="#a569ff" stroke-width="2.5" stroke-dasharray="3 3"/>
+              <line x1="30" y1="36" x2="60" y2="36" stroke="#a569ff" stroke-width="2.5"/>
+              <line x1="30" y1="42" x2="55" y2="42" stroke="#a569ff" stroke-width="2.5"/>
+              <circle cx="16" cy="40" r="2.5" fill="#bb8eff"/>
+            </svg>
+          </div>
+          <div class="card-title">Tickets</div>
+          <div class="card-meta">Async · Email Reply</div>
+          <div class="card-body">For deep, complex or multi-step issues. Routed by topic and urgency to the right specialist — answered by email.</div>
+          <div class="card-cta">Learn more <span class="card-cta-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="detail-panel" id="detail-panel">
+        <div class="detail-inner" id="detail-inner"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block panel" id="hours">
+    <div class="container">
+      <div class="section-eyebrow">Support Hours</div>
+      <h2 class="section-title">When we're <em>here.</em><br>And when we're not.</h2>
+
+      <div class="channels-stack">
+        <!-- HEROBOT -->
+        <div class="channel-row bot">
+          <div class="channel-left">
+            <div class="channel-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect x="6" y="8" width="20" height="18" rx="3" stroke="#a569ff" stroke-width="2"/>
+                <circle cx="12" cy="16" r="1.5" fill="#bb8eff"/>
+                <circle cx="20" cy="16" r="1.5" fill="#bb8eff"/>
+                <path d="M12 21 Q16 24 20 21" stroke="#a569ff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <line x1="16" y1="8" x2="16" y2="4" stroke="#a569ff" stroke-width="2"/>
+                <circle cx="16" cy="3" r="1.5" fill="#bb8eff"/>
+              </svg>
+            </div>
+            <div>
+              <div class="channel-name">Herobot</div>
+              <div class="channel-sub">AI Assistant</div>
+            </div>
+          </div>
+          <div class="channel-mid">
+            <div class="days-row">
+              <span class="d on">M</span>
+              <span class="d on">T</span>
+              <span class="d on">W</span>
+              <span class="d on">T</span>
+              <span class="d on">F</span>
+              <span class="d on">S</span>
+              <span class="d on">S</span>
+            </div>
+            <div class="time-band">
+              <div class="band-bar full"></div>
+              <div class="band-label start">12am</div>
+              <div class="band-label end">11:59pm</div>
+            </div>
+          </div>
+          <div class="channel-right">
+            <div class="availability-tag always-on">
+              <span class="tag-dot"></span>
+              Always On
+            </div>
+            <div class="availability-hours">24 / 7</div>
+          </div>
+        </div>
+
+        <!-- LIVE CHAT & PHONE -->
+        <div class="channel-row human">
+          <div class="channel-left">
+            <div class="channel-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M5 9 Q5 6 8 6 H24 Q27 6 27 9 V18 Q27 21 24 21 H13 L8 25 V21 Q5 21 5 18 Z" stroke="#a569ff" stroke-width="2" fill="none"/>
+                <circle cx="11" cy="14" r="1.5" fill="#bb8eff"/>
+                <circle cx="16" cy="14" r="1.5" fill="#bb8eff"/>
+                <circle cx="21" cy="14" r="1.5" fill="#bb8eff"/>
+              </svg>
+            </div>
+            <div>
+              <div class="channel-name">Live Chat &amp; Phone</div>
+              <div class="channel-sub">Human Support</div>
+            </div>
+          </div>
+          <div class="channel-mid">
+            <div class="days-row">
+              <span class="d on">M</span>
+              <span class="d on">T</span>
+              <span class="d on">W</span>
+              <span class="d on">T</span>
+              <span class="d on">F</span>
+              <span class="d off">S</span>
+              <span class="d off">S</span>
+            </div>
+            <div class="time-band">
+              <div class="band-bar partial"></div>
+              <div class="band-label start">8:30am</div>
+              <div class="band-label end">7:00pm</div>
+              <div class="band-tz">AEST</div>
+            </div>
+          </div>
+          <div class="channel-right">
+            <div class="availability-tag weekdays">
+              <span class="tag-dot"></span>
+              Weekdays
+            </div>
+            <div class="availability-hours"><em>10.5</em> hrs/day</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block dark" id="urgency">
+    <div class="container">
+      <div class="section-eyebrow">Urgency Levels</div>
+      <h2 class="section-title">What counts as<br><em>urgent?</em></h2>
+
+      <div class="urgency-grid">
+        <div class="urgency-col urgent">
+          <div class="urgency-stamp">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#bb8eff"><polygon points="7,0 14,14 0,14"/></svg>
+            URGENT — BLOCKS WORK
+          </div>
+          <div class="urgency-symbol">!</div>
+          <div class="urgency-h">Stops the business in its tracks.</div>
+          <ul class="urgency-list">
+            <li><span class="marker">01</span>System outages affecting payroll or HR</li>
+            <li><span class="marker">02</span>Payroll processing failures</li>
+            <li><span class="marker">03</span>Critical access &amp; login issues</li>
+            <li><span class="marker">04</span>Data integrity problems blocking core ops</li>
+          </ul>
+        </div>
+        <div class="urgency-col non-urgent">
+          <div class="urgency-stamp">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#a569ff"><circle cx="7" cy="7" r="5"/></svg>
+            NON-URGENT — HAS WORKAROUND
+          </div>
+          <div class="urgency-symbol">?</div>
+          <div class="urgency-h">Annoying, but not blocking.</div>
+          <ul class="urgency-list">
+            <li><span class="marker">01</span>General "how do I…" enquiries</li>
+            <li><span class="marker">02</span>Minor display or UI issues</li>
+            <li><span class="marker">03</span>Functionality questions with a workaround</li>
+            <li><span class="marker">04</span>Feature requests &amp; suggestions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block panel" id="phone">
+    <div class="container">
+      <div class="section-eyebrow">Alternative Support</div>
+      <h2 class="section-title">Phone support, for<br><em>elite plans.</em></h2>
+
+      <div class="phone-banner">
+        <div class="phone-icon-wrap">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M8 4 Q4 4 4 8 V14 Q4 20 12 26 Q18 32 26 32 H30 Q32 32 32 28 V24 Q32 22 30 22 L24 22 Q22 22 22 24 L22 26 Q16 24 12 18 L14 18 Q16 18 16 16 V10 Q16 8 14 8 Z" stroke="white" stroke-width="2" fill="rgba(255,255,255,0.1)"/>
+          </svg>
+        </div>
+        <div class="phone-content">
+          <div class="phone-eyebrow">Elite HR &amp; EmploymentOS Unlimited</div>
+          <div class="phone-title">Call us, <em>directly.</em></div>
+          <div class="phone-sub">Select option 3 and enter your platform PIN. Mon–Fri, 8:30am–7pm AEST. Leave a voicemail outside hours — we'll call back.</div>
+        </div>
+        <div class="phone-number">
+          1300 084 847
+          <small>Option 3</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block dark" id="practice">
+    <div class="container">
+      <div class="section-eyebrow">Best Practice</div>
+      <h2 class="section-title">Ask <em>well,</em><br>get answered fast.</h2>
+
+      <div class="practice-grid">
+        <div class="practice-card">
+          <div class="practice-num">01</div>
+          <div class="practice-h">Be specific</div>
+          <div class="practice-p">Name the module, the employee, the date range or the exact error. Vague questions trigger more clarifying questions.</div>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">02</div>
+          <div class="practice-h">Bring the evidence</div>
+          <div class="practice-p">Paste error messages. Attach screenshots. Mention what you've already tried. Cuts back-and-forth by half.</div>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">03</div>
+          <div class="practice-h">Answer the bot</div>
+          <div class="practice-p">Herobot's prompts route you to the right team. Skipping or one-wording them sends you down the wrong path.</div>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">04</div>
+          <div class="practice-h">Flag honestly</div>
+          <div class="practice-p">"Urgent" should mean work is genuinely blocked. Honest flagging helps us route real emergencies to the front of the queue, faster.</div>
+        </div>
+      </div>
+
+      <div class="compare-box">
+        <div class="compare-side bad">
+          <div class="label">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10" stroke="#ff6b6b" stroke-width="2"/><line x1="10" y1="2" x2="2" y2="10" stroke="#ff6b6b" stroke-width="2"/></svg>
+            VAGUE — SLOWS YOU DOWN
+          </div>
+          <div class="compare-quote">"Payroll is broken."</div>
+        </div>
+        <div class="compare-divider"></div>
+        <div class="compare-side good">
+          <div class="label">
+            <svg width="12" height="12" viewBox="0 0 12 12"><polyline points="2,7 5,10 10,3" stroke="#bafc58" stroke-width="2" fill="none"/></svg>
+            SPECIFIC — GETS YOU A FIX
+          </div>
+          <div class="compare-quote">"Weekly pay run for the 6 Apr period is stuck on 'processing' for 4 employees — error E-1042. Have tried re-running."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block panel" id="training">
+    <div class="container">
+      <div class="section-eyebrow">Beyond Support</div>
+      <h2 class="section-title">Train <em>up.</em><br>Stay ahead.</h2>
+      <p class="section-intro">Support gets you unstuck. Training keeps you (and your team) from getting stuck in the first place. Two ways to level up:</p>
+
+      <div class="training-grid">
+        <!-- LEARNING HUB / GO1 -->
+        <div class="training-card hub">
+          <div class="training-badge">
+            <span class="badge-dot"></span>
+            <span>Self-Paced · On-Demand</span>
+          </div>
+          <div class="training-icon">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="14" width="40" height="32" rx="4" stroke="#a569ff" stroke-width="2.5"/>
+              <line x1="8" y1="22" x2="48" y2="22" stroke="#a569ff" stroke-width="2.5"/>
+              <circle cx="13" cy="18" r="1.5" fill="#bb8eff"/>
+              <circle cx="18" cy="18" r="1.5" fill="#bb8eff"/>
+              <circle cx="23" cy="18" r="1.5" fill="#bb8eff"/>
+              <rect x="14" y="28" width="12" height="12" rx="1" fill="#bb8eff" opacity="0.3"/>
+              <path d="M18 34 L20 36 L24 32" stroke="#bafc58" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <line x1="30" y1="30" x2="42" y2="30" stroke="#a569ff" stroke-width="2"/>
+              <line x1="30" y1="35" x2="40" y2="35" stroke="#a569ff" stroke-width="2"/>
+              <line x1="30" y1="40" x2="38" y2="40" stroke="#a569ff" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="training-title">Learning Hub <em>in Go1</em></div>
+          <div class="training-sub">Short, self-paced Employment Hero courses inside your Go1 portal. Available globally to any customer with an active Go1 portal — search "Employment Hero" in the Content Library.</div>
+
+          <div class="training-steps">
+            <div class="t-step">
+              <span class="t-step-num">01</span>
+              <span>Open Go1 as an Admin</span>
+            </div>
+            <div class="t-step">
+              <span class="t-step-num">02</span>
+              <span>Search <em>"Employment Hero"</em> in the Content Library</span>
+            </div>
+            <div class="t-step">
+              <span class="t-step-num">03</span>
+              <span>Assign to your team — including via mobile</span>
+            </div>
+          </div>
+
+          <div class="training-links">
+            <a href="https://vimeo.com/1137547509?share=copy&fl=sv&fe=ci" target="_blank" rel="noopener" class="t-link primary">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polygon points="3,2 10,6 3,10" fill="currentColor"/></svg>
+              Walkthrough video
+            </a>
+            <a href="https://workhelp.employmenthero.com/hc/en-au/articles/14866191436431-How-to-view-and-complete-your-assigned-training-on-mobile" target="_blank" rel="noopener" class="t-link">
+              Mobile learning guide →
+            </a>
+          </div>
+        </div>
+
+        <!-- WEBINARS -->
+        <div class="training-card webinars">
+          <div class="training-badge">
+            <span class="badge-dot live"></span>
+            <span>Live · Daily · Real-Time Q&amp;A</span>
+          </div>
+          <div class="training-icon">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="12" width="36" height="26" rx="3" stroke="#a569ff" stroke-width="2.5"/>
+              <path d="M42 20 L50 16 V34 L42 30 Z" stroke="#a569ff" stroke-width="2.5" fill="none"/>
+              <circle cx="16" cy="22" r="3" stroke="#bb8eff" stroke-width="2"/>
+              <circle cx="28" cy="22" r="3" stroke="#bb8eff" stroke-width="2"/>
+              <path d="M11 32 Q11 28 16 28 Q21 28 21 32" stroke="#bb8eff" stroke-width="2" fill="none"/>
+              <path d="M23 32 Q23 28 28 28 Q33 28 33 32" stroke="#bb8eff" stroke-width="2" fill="none"/>
+              <circle cx="46" cy="46" r="5" fill="#ff6b6b"/>
+              <text x="46" y="49" text-anchor="middle" font-family="Lexend" font-size="6" font-weight="900" fill="white">LIVE</text>
+            </svg>
+          </div>
+          <div class="training-title">Live <em>Webinars</em></div>
+          <div class="training-sub">Hosted daily for customers and partners. Join, ask questions in real time, and get answers on the spot from the team. Topics rotate — new sessions added regularly.</div>
+
+          <div class="training-steps">
+            <div class="t-step">
+              <span class="t-step-num">01</span>
+              <span>Browse upcoming sessions in the Help Centre</span>
+            </div>
+            <div class="t-step">
+              <span class="t-step-num">02</span>
+              <span>Register for the topics that matter to you</span>
+            </div>
+            <div class="t-step">
+              <span class="t-step-num">03</span>
+              <span>Join live and ask your questions in real time</span>
+            </div>
+          </div>
+
+          <div class="training-links">
+            <a href="https://help.employmenthero.com/hc/en-au#upcoming-webinars" target="_blank" rel="noopener" class="t-link primary">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="3" width="8" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><line x1="2" y1="5" x2="10" y2="5" stroke="currentColor" stroke-width="1.5"/></svg>
+              View schedule &amp; register
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="training-footnote">
+        <span class="footnote-marker">*</span>
+        <span>Go1 Learning Hub content available globally to any customer with an active Go1 portal. New training topics added regularly across both Go1 and live webinars.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block dark" id="notice">
+    <div class="container">
+      <div class="section-eyebrow">Email Notice</div>
+      <h2 class="section-title">A quick<br><em>heads-up.</em></h2>
+
+      <div class="notice-box">
+        <div class="notice-icon">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="10" width="24" height="18" stroke="currentColor" stroke-width="2"/>
+            <polyline points="6,10 18,22 30,10" stroke="currentColor" stroke-width="2" fill="none"/>
+            <line x1="4" y1="32" x2="32" y2="4" stroke="#ff6b6b" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="notice-strike">support@employmenthero.com</div>
+          <div class="notice-h">Legacy inbox <em>decommissioned</em> April 2024</div>
+          <div class="notice-body">Anything sent there goes unanswered and bounces an auto-reply. Use the in-platform channels above instead.</div>
+        </div>
+        <div class="notice-stamp">DO NOT USE</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-eyebrow">Transparency</div>
+      <h2 class="footer-title">Want to see how<br>we're <em>performing?</em></h2>
+      <p class="footer-sub">Check out our Support Performance Overview for full transparency on response times, resolution speed, and customer satisfaction scores.</p>
+      <div class="footer-actions">
+        <a href="https://help.employmenthero.com/hc/en-au/articles/12638788073231-Support-performance" target="_blank" rel="noopener" class="btn btn-primary">
+          View Performance Overview <span class="btn-arrow">→</span>
+        </a>
+        <a href="#top" class="btn btn-secondary">Back to Top</a>
+      </div>
+      <div class="footer-meta-row">
+        <span>Employment Hero · Customer Support</span>
+        <span class="bright">Mon – Fri · 8:30am – 7:00pm AEST</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+</div><!-- /.app-layout -->
+
+<script>
+  const DETAILS = {
+    bot: {
+      label: "01 / Herobot — Always On",
+      title: "An AI <em>first responder.</em>",
+      meta: [
+        ["AVAILABLE", "24 / 7 · Every day of the year"],
+        ["BEST FOR", "Quick troubleshooting, general 'how do I' questions"],
+        ["POWERED BY", "Help articles + AI matching"],
+        ["ESCALATE?", "Yes — option to connect to a human at any time"]
+      ],
+      points: [
+        "Type your question naturally — Herobot pulls answers from the help library in seconds.",
+        "Out of hours? Herobot is your only live channel. It can still resolve most queries on its own.",
+        "Stuck? Pick 'speak to a human' and you'll be queued (during hours) or routed to a ticket.",
+        "The catch: short, one-word answers send you down the wrong path. Reply in full sentences."
+      ]
+    },
+    chat: {
+      label: "02 / Live Chat — Real Humans",
+      title: "Real-time chat, <em>real humans.</em>",
+      meta: [
+        ["AVAILABLE", "Monday – Friday · 8:30am – 7:00pm AEST"],
+        ["BEST FOR", "Fast back-and-forth, clarifications, smaller fixes"],
+        ["ESCALATION", "Auto-converts to a ticket if investigation is needed"],
+        ["HISTORY", "Saved — you can pick up where you left off"]
+      ],
+      points: [
+        "If Herobot can't resolve it, request a human and you'll join the live queue.",
+        "Great for issues you can describe in 1–3 sentences with concrete details.",
+        "If your matter needs backend investigation, your agent lodges a ticket on your behalf.",
+        "Outside hours, chat is unavailable — you'll be prompted to lodge a ticket instead."
+      ]
+    },
+    ticket: {
+      label: "03 / Tickets — Deep Work",
+      title: "Async tickets, <em>routed carefully.</em>",
+      meta: [
+        ["AVAILABLE", "24 / 7 lodgement · Reply via email"],
+        ["BEST FOR", "Complex bugs, data issues, multi-step investigations"],
+        ["ROUTING", "By urgency, topic and team availability"],
+        ["RESPONSE", "Varies by complexity and queue volume"]
+      ],
+      points: [
+        "Lodge in-platform. The form fields exist to route your ticket correctly — fill them in.",
+        "Be thorough on the first submission. Screenshots, dates, employee IDs, error codes.",
+        "Tickets are answered by our support team via email — keep an eye on your inbox.",
+        "Urgent tickets (system outages, payroll failures) jump the queue. Mark them honestly."
+      ]
+    }
+  };
+
+  const cards = document.querySelectorAll('.option-card');
+  const panel = document.getElementById('detail-panel');
+  const inner = document.getElementById('detail-inner');
+  let activeId = null;
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.id;
+      if (activeId === id) {
+        panel.classList.remove('open');
+        cards.forEach(c => c.classList.remove('active'));
+        activeId = null;
+        return;
+      }
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      activeId = id;
+
+      const data = DETAILS[id];
+      inner.innerHTML = `
+        <div>
+          <div class="detail-label">${data.label}</div>
+          <div class="detail-title">${data.title}</div>
+          <div class="detail-meta-grid">
+            ${data.meta.map(([k,v]) => `
+              <div class="detail-meta-row">
+                <div class="key">${k}</div>
+                <div>${v}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div>
+          <div class="detail-label">How to use it well</div>
+          <ul class="detail-points">
+            ${data.points.map((p, i) => `
+              <li><span class="point-num">${String(i+1).padStart(2,'0')}</span><span>${p}</span></li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+      panel.classList.add('open');
+      setTimeout(() => {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 200);
+    });
+  });
+
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navItems.forEach(n => n.classList.remove('active'));
+      item.classList.add('active');
+      document.getElementById('sidebar').classList.remove('open');
+    });
+  });
+
+  document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.option-card, .practice-card, .urgency-col, .hours-viz, .notice-box, .decision-tree, .step-card, .phone-banner, .training-card, .channel-row, .access-card, .why-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, background 0.35s, color 0.35s, box-shadow 0.35s, border-color 0.35s';
+    observer.observe(el);
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(n => {
+          n.classList.toggle('active', n.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.35, rootMargin: "-20% 0px -50% 0px" });
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+
+</body>
+</html>
